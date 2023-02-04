@@ -6,11 +6,14 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import PostPage from './pages/PostPage';
-import Albums from './albums/Albums';
-import ToDOs from './toDos/ToDos';
+import PostPage from './components/PostPage';
+import Albums from './components/Albums';
+import ToDOs from './components/ToDos';
 import { getPostsList } from './service/postService';
 import { getToDo } from './service/toDoService';
+import { getAlbums } from './service/albumService';
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,7 +25,8 @@ const router = createBrowserRouter([
     }, 
     {
       path: "/albums",
-      element: <Albums/>
+      element: <Albums/>,
+      loader: getAlbums
     }, 
     {
       path: "/toDos",
